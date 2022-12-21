@@ -118,3 +118,21 @@ def test_grade_assignment_good_assignment(client, h_teacher_1):
 
     assert data['grade'] == 'A'
     assert data['state'] == 'GRADED'
+
+def test_grade_assignment_unauthorized_teacher(client, h_teacher_1):
+    """
+    Success case: If an assignment exists and submitted by student then grade it 
+    """
+    response = client.post(
+        '/teacher/assignments/grade',
+        headers='',
+        json={
+            "id": 1,
+            "grade": "A"
+        }
+    )
+
+    assert response.status_code == 401
+    data = response.json
+
+    assert data['error'] == 'FyleError'
