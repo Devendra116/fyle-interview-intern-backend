@@ -26,25 +26,63 @@ You will hear back within 48 hours from us via email.
 1. Fork this repository to your github account
 2. Clone the forked repository and proceed with steps mentioned below
 
-### Install requirements
+<details>
+<summary>Installation for Linux and Mac</summary>
 
+### Install requirements
 ```
 virtualenv env --python=python3.8
 source env/bin/activate
 pip install -r requirements.txt
 ```
-### Reset DB
 
+### Reset DB
 ```
-export FLASK_APP=core/server.py
+$env:FLASK_APP = "core/server.py"
 rm core/store.sqlite3
 flask db upgrade -d core/migrations/
 ```
-### Start Server
 
+### Start Server 
 ```
 bash run.sh
 ```
+
+### Run Tests
+```
+pytest -vvv -s tests/
+
+# for test coverage report
+# pytest --cov
+# open htmlcov/index.html
+```
+
+</details>
+
+<details>
+<summary>Installation for Windows</summary>
+
+##### Note: Commands tested for powershell
+
+### Install requirements
+```
+virtualenv env --python=python3.8
+./env/bin/activate
+pip install -r requirements.txt
+```
+
+### Reset DB
+```
+$env:FLASK_APP = "core/server.py"
+rm core/store.sqlite3
+flask db upgrade -d core/migrations/
+```
+
+### Start Server 
+```
+.\run.bat
+```
+
 ### Run Tests
 
 ```
@@ -54,3 +92,8 @@ pytest -vvv -s tests/
 # pytest --cov
 # open htmlcov/index.html
 ```
+</details>
+
+
+
+
