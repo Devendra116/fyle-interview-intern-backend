@@ -67,13 +67,13 @@ pytest -vvv -s tests/
 ### Install requirements
 ```
 virtualenv env --python=python3.8
-./env/bin/activate
+.\env\bin\activate
 pip install -r requirements.txt
 ```
 
 ### Reset DB
 ```
-$env:FLASK_APP = "core/server.py"
+set FLASK_APP = "core/server.py"
 rm core/store.sqlite3
 flask db upgrade -d core/migrations/
 ```
